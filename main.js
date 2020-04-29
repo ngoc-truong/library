@@ -32,9 +32,12 @@ Book.prototype.info = function() {
 }
 
 // Create instances
-let book1 = new Book("Mister Aufziehvogel", "Haruki Murakami", "Tralalala", true, "https://bit.ly/2YhgMAt");
-let book2 = new Book("Kafka am Strand", "Haruki Murakami", "Guter Ebay, gerne wieder", true, "https://bit.ly/3bPpD0h");
-let book3 = new Book("Der Idiot", "Fjodor Dostojewski", "Nice one!", true, "https://bit.ly/2xgJMNA");
+let text1 = "I'm baby viral blue bottle neutra, kombucha yuccie celiac vaporware tote bag hoodie. Blue bottle before they sold out lyft church-key, single-origin coffee readymade yuccie man braid fam adaptogen affogato scenester. Chillwave cloud bread mumblecore affogato selvage williamsburg la croix. Umami austin occupy helvetica, four dollar toast disrupt adaptogen sustainable migas tacos authentic. Chicharrones letterpress banjo man bun vaporware";
+let text2 = "Master cleanse leggings viral aesthetic actually humblebrag literally PBR&B. Street art blog palo santo meh. Trust fund 8-bit glossier offal semiotics hot chicken tacos cliche, vice master cleanse asymmetrical. Snackwave hashtag lomo meh deep v VHS vaporware ennui food truck you probably haven't heard of them.";
+let text3 = "Taiyaki vice slow-carb flexitarian offal crucifix dreamcatcher cray. Butcher disrupt humblebrag everyday carry, letterpress godard dreamcatcher shabby chic la croix poutine schlitz umami taiyaki tacos franzen. Ennui kitsch post-ironic fam, offal migas salvia 8-bit put a bird on it roof party XOXO. Banh mi cray roof party shabby chic, try-hard chia waistcoat +1 health goth. Adaptogen marfa portland, poutine slow-carb bespoke listicle gentrify.";
+let book1 = new Book("Mister Aufziehvogel", "Haruki Murakami", text1, true, "https://bit.ly/2YhgMAt");
+let book2 = new Book("Kafka am Strand", "Haruki Murakami", text2, true, "https://bit.ly/3bPpD0h");
+let book3 = new Book("Der Idiot", "Fjodor Dostojewski", text3, true, "https://bit.ly/2xgJMNA");
 
 myLibrary.push(book1);
 myLibrary.push(book2);
@@ -69,26 +72,32 @@ function handleForm(event) {
 }
 
 function render(targetDom, obj, index){
-    let card        = document.createElement("div");
-    let cardTitle   = document.createElement("p");
-    let cardAuthor  = document.createElement("p");
-    let cardPages   = document.createElement("p");
-    let cardRead    = document.createElement("button");
-    let cardDelete  = document.createElement("button");
-    let cardCover   = document.createElement("img");
+    let card            = document.createElement("div");
+    let cardDelete      = document.createElement("button");
+    let cardRead        = document.createElement("button");
+    let cardTitle       = document.createElement("h1");
+    let cardCover       = document.createElement("img");
+    let cardAuthor      = document.createElement("h2");
+    let cardDescription = document.createElement("p");
 
-    cardTitle.textContent   = obj.title;
-    cardAuthor.textContent  = obj.author;
-    cardPages.textContent   = obj.description;
-    cardRead.textContent    = obj.read;
-    cardDelete.textContent  = "Delete book";
-    cardDelete.dataset.index = index;
+    cardDelete.textContent      = "x";
+    cardDelete.dataset.index    = index;
+    cardDelete.id               = `delete-${index}`;
+    cardRead.textContent        = obj.read;
+    cardTitle.textContent       = obj.title;
+    cardCover.src               = obj.cover;
+    cardAuthor.textContent      = `by ${obj.author}`;
+    cardDescription.textContent = obj.description;
+
+    card.classList.add("card");
     cardDelete.classList.add("delete");
-    cardDelete.id           = `delete-${index}`;
-    cardCover.src           = obj.cover;
+    cardRead.classList.add("read");
+    cardTitle.classList.add("book-title");
+    cardCover.classList.add("book-cover");
+    cardAuthor.classList.add("book-author");
+    cardDescription.classList.add("book-description");
 
-    card.append(cardDelete, cardTitle, cardAuthor, cardPages, cardRead, cardCover);
-
+    card.append(cardRead, cardDelete, cardTitle, cardCover, cardAuthor, cardDescription);
     targetDom.appendChild(card);
 }
 

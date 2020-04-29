@@ -3,43 +3,50 @@
     <head>
         <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" href="main.css">
+        <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;400;600&display=swap" rel="stylesheet"> 
     </head>
     <body>
         <section class="left-col">
-            <h1>Hidden jewels</h1>
-            <div id="feedback">
-
+            <div id="container">
+                <h1>Hidden jewels</h1>
+                <p id="instructions">
+                    Salut! Welcome to the beautiful world of books. 
+                    Add your favorite book and your own thoughts about it to this beautiful site.
+                    Not sure why, but hey, maybe it will release some juicy fruity endorphines.
+                </p>
+                <div id="feedback">
+    
+                </div>
+                <form id="book-form">
+                    <p>
+                        <label for="title">Title:</label>
+                        <input name="title" id="title">
+                    </p>
+        
+                    <p>
+                        <label for="author">Author:</label>
+                        <input name="author" id="author">    
+                    </p>
+                   
+                    <p>
+                        <label for="description">Description:</label>
+                        <input name="description" id="description">    
+                    </p>
+                   
+                    <p>Already read?
+                        <input type="radio" id="read" name="already-read" value="true">
+                        <label for="read">Yes</label>
+                        <input type="radio" id="unread" name="already-read" value="false">
+                        <label for="unread">No</label>    
+                    </p>
+                    <p>
+                        <label for="cover">Book cover (url): </label>
+                        <input type="url" name="cover" id="cover">
+                    </p>
+        
+                    <button id="submit">Submit</button> 
+                </form>
             </div>
-            <form id="book-form">
-                <p>
-                    <label for="title">Title:</label>
-                    <input name="title" id="title">
-                </p>
-    
-                <p>
-                    <label for="author">Author:</label>
-                    <input name="author" id="author">    
-                </p>
-               
-                <p>
-                    <label for="description">Description:</label>
-                    <input name="description" id="description">    
-                </p>
-               
-                <p>Already read?
-                    <input type="radio" id="read" name="already-read" value="true">
-                    <label for="read">Yes</label>
-                    <input type="radio" id="unread" name="already-read" value="false">
-                    <label for="unread">No</label>    
-                </p>
-                <p>
-                    <label for="cover">Book cover (url): </label>
-                    <input type="url" name="cover" id="cover">
-                </p>
-    
-               
-                <button id="submit">Submit</button> 
-            </form>
         </section>
         <main id="main" class="middle-col">
 

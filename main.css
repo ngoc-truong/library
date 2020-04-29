@@ -1,13 +1,99 @@
+:root {
+    --background: #b0e0e6;
+    --font: #454547;
+    --light-grey: #dbdbdd;
+    --grey: #aeafb3;
+    --highlight1: #eec71a;
+    --highlight2: #e89d93;
+}
+
 body {
     display: grid;
     grid-template-columns: 1fr 3fr;
+    font-family: 'Josefin Sans', sans-serif;
+    background-color: var(--background);
+    color: var(--font);
 }
 
-.left-col {
-    grid-column: 1 / 2;
+p {
+    line-height: 1.5em;
 }
 
 .middle-col {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+}
+
+.left-col {
+    grid-column: 1 / 2;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.left-col h1 {
+    font-size: 3em;
+    padding: 0;
+    margin: 0;
+}
+
+#container, .card{
+    padding: 2em;
+    margin-top: 2em;
+    background-color: white;
+    width: 87%;
+    border-radius: 10px;
+}
+#instructions {
+    line-height: 1.5em;
+}
+#book-form input {
+    width: 90%;
+}
+
+#book-form input[type=radio]{
+    width: 1em;
+}
+
+#description {
+    height: 10em;
+}
+
+button {
+    border: none;
+}
+
+#submit, .delete, .read {
+    font-weight: bolder;
+}
+
+#submit:hover, .delete:hover, .read:hover {
+    filter: brightness(110%);
+}
+
+#submit {
+    width: 8em;
+    height: 3em;
+    background-color: var(--highlight2);
+}
+
+.delete, .read {
+    background-color: var(--highlight1);
+    color: var(--font);
+    height: 2em;
+}
+
+.delete {
+    float: right;
+    width: 2em;
+}
+
+.card {
+    width: 80%;
+}
+
+.book-cover {
+    width: 50%;
+}
+
+img{
 }
