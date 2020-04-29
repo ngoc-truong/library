@@ -5,8 +5,11 @@
         <link rel="stylesheet" type="text/css" href="main.css">
     </head>
     <body>
-        <section id="left-col">
+        <section class="left-col">
             <h1>Hidden jewels</h1>
+            <div id="feedback">
+
+            </div>
             <form id="book-form">
                 <p>
                     <label for="title">Title:</label>
@@ -19,8 +22,8 @@
                 </p>
                
                 <p>
-                    <label for="numOfPages">No. of pages:</label>
-                    <input name="numOfPages" id="numOfPages">    
+                    <label for="description">Description:</label>
+                    <input name="description" id="description">    
                 </p>
                
                 <p>Already read?
@@ -31,13 +34,16 @@
                 </p>
                 <p>
                     <label for="cover">Book cover (url): </label>
-                    <input name="cover" id="cover">
+                    <input type="url" name="cover" id="cover">
                 </p>
     
                
                 <button id="submit">Submit</button> 
             </form>
         </section>
+        <main id="main" class="middle-col">
+
+        </main>
     </body>
 </html>
 
