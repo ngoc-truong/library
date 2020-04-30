@@ -1,10 +1,18 @@
 :root {
     --background: #b0e0e6;
+    --background-gradient: #d0e1e4;
     --font: #454547;
+    --font-gradient: #92929b;
     --light-grey: #dbdbdd;
     --grey: #aeafb3;
     --highlight1: #eec71a;
+    --highlight1-gradient: #f5e9b4;
     --highlight2: #e89d93;
+    --highlight2-gradient: #ebc7c2;
+    --highlight3: #a6f3aa;
+    --highlight3-gradient: #a6f3aa;
+    --card: white;
+    --card-gradient: white;
 }
 
 /* General elemets */
@@ -13,6 +21,7 @@ body {
     grid-template-columns: 1fr 3fr;
     font-family: 'Josefin Sans', sans-serif;
     background-color: var(--background);
+    background: linear-gradient(to left, var(--background),var(--background-gradient));
     color: var(--font);
 }
 
@@ -22,6 +31,14 @@ p {
 
 .middle-col {
     margin-bottom: 2em;
+}
+
+#container h1{
+    font-family: 'Pacifico', cursive;
+    text-align: center;
+    background: -webkit-linear-gradient(45deg, var(--font), var(--font-gradient));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 #container, .card{
@@ -51,7 +68,14 @@ p {
     line-height: 1.5em;
 }
 #book-form input {
-    width: 90%;
+    width: 95%;
+}
+
+#book-form textarea {
+    width: 95%;
+
+    padding: 0.5em;
+    font-size: 1.3em;
 }
 
 #book-form input[type=radio]{
@@ -78,6 +102,7 @@ button {
     width: 8em;
     height: 3em;
     background-color: var(--highlight2);
+    background: linear-gradient(45deg, var(--highlight2), var(--highlight2-gradient));
     border-radius: 5px;
 }
 
@@ -87,6 +112,8 @@ button {
     width: 65%;
     display: grid;
     grid-template-columns: 1fr 2fr;
+    background: linear-gradient(45deg, var(--card), var(--card-gradient));
+
 }
 
 .wrapper-options {
@@ -99,11 +126,29 @@ button {
     height: 2em;
     border-radius: 5px;
 }
+.read, .unread {
+    width: 15.5em;
+}
+
+.read:hover, .unread:hover {
+    filter: brightness(80%);
+}
+
+.read {
+    background-color: transparent;
+    border: 3px solid var(--background);
+}
+
+.unread {
+    background-color: transparent;
+    border: 3px solid var(--highlight2);
+}
 
 .delete {
     float: right;
     width: 2em;
-    
+    background: linear-gradient(45deg, var(--highlight1), var(--highlight1-gradient));
+
 }
 
 .book-cover {

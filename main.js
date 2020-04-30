@@ -6,9 +6,12 @@ const descriptionInput  = document.querySelector("#description");
 const cover             = document.querySelector("#cover");
 const submitButton      = document.querySelector("#submit");
 const form              = document.querySelector("#book-form");
+const radioRead         = document.querySelector("#read");
+const radioUnread       = document.querySelector("#unread");
 const feedback          = document.querySelector("#feedback");
 const mainContent       = document.querySelector("#main");
 let deleteButtons       = document.querySelectorAll(".delete");     // Empty at the beginning
+let readButtons         = document.querySelectorAll(".read");       // Empty at the beginning
 
 // Book class
 function Book(title, author, description, read, url) {
@@ -85,7 +88,9 @@ function render(targetDom, obj, index){
     cardDelete.textContent      = "x";
     cardDelete.dataset.index    = index;
     cardDelete.id               = `delete-${index}`;
-    cardRead.textContent        = obj.read;
+    cardRead.textContent        = obj.read ? "Already read :)" : "Unread yet :(";
+    cardRead.dataset.index      = index;
+    cardRead.id                 = `read-${index}`;
     cardTitle.textContent       = obj.title;
     cardCover.src               = obj.cover;
     cardAuthor.textContent      = `by ${obj.author}`;
@@ -116,6 +121,10 @@ function renderAll(targetDom, array){
     for (let i = array.length - 1; i >= 0; i--){
         render(targetDom, array[i], i);
     }
+    deleteButtons   = document.querySelectorAll(".delete");
+    readButtons     = document.querySelectorAll(".read");
+    refreshDeleteButtons();
+    refreshReadButtons();
 }
 
 function removeAll(targetDom){
@@ -126,36 +135,66 @@ function removeAll(targetDom){
 
 // Event listeners
 submitButton.addEventListener("click", () => {
-    addBookToLibrary();
-    addFeedback(myLibrary);
-    removeAll(mainContent);
-    renderAll(mainContent, myLibrary);
-    form.reset();
+    if (contentPresent()){
+        addBookToLibrary();
+        addFeedback(myLibrary);
+        removeAll(mainContent);
+        renderAll(mainContent, myLibrary);
+        form.reset();
+    } else {
+        alert("I know, I can be a bit annoying. Sorry :(. But you need to fill out the form completely.");
+    }
+
 });
 
 form.addEventListener("submit", handleForm);
 
 renderAll(mainContent, myLibrary);
 
-
-// BUG HERE!
-deleteButtons = document.querySelectorAll(".delete");
-
-deleteButtons.forEach( (button) => {
-    button.addEventListener("click", (e) => {
-        console.log(button.dataset.index);
-        let indexOfBook = button.dataset.index;
-        myLibrary.splice(indexOfBook, 1);
-        removeAll(mainContent);
-        renderAll(mainContent, myLibrary);
+function refreshDeleteButtons(){
+    deleteButtons.forEach( (button) => {
+        button.addEventListener("click", (e) => {
+            if (confirm("Are you sure, you want to delete this book :(?")){
+                let indexOfBook = button.dataset.index;
+                myLibrary.splice(indexOfBook, 1);
+                removeAll(mainContent);
+                renderAll(mainContent, myLibrary);
+            }
+        });
     });
-});
+}
 
-deleteButtons = document.querySelectorAll(".delete");
+function refreshReadButtons(){
+    readButtons.forEach( (button) => {
+        button.addEventListener("click", (e) => {
+            let indexOfBook = button.dataset.index;
 
-deleteButtons = document.querySelectorAll(".delete");
+            if (myLibrary[indexOfBook].read){
+                button.textContent = "Unread yet :(";
+                myLibrary[indexOfBook].read = false;
+                button.classList.add("unread");
+            } else {
+                button.textContent = "Already read :)";
+                myLibrary[indexOfBook].read = true;
+                button.classList.remove("unread");
+            }
+        })
+    })
+}
 
+function contentPresent(){
+    if (titleInput.value === "" || 
+        authorInput.value === "" || 
+        descriptionInput.value === "" ||
+        cover.value === "" ||
+        (radioRead.checked === false && radioUnread.checked === false))
+    {
+        return false;
+    } else {
+        return true;
+    }
+}
 /* TO DO
-- Deleting of books does not work. When deleting and changing a book in the array
-- The newly rendered deleteButtons are not query selected... :/.
+- Read/Unread button
+- Validations for form
 */
