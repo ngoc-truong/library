@@ -72,14 +72,16 @@ function handleForm(event) {
 }
 
 function render(targetDom, obj, index){
+    // Create DOM elements
     let card            = document.createElement("div");
     let cardDelete      = document.createElement("button");
+    let cardCover       = document.createElement("img");
     let cardRead        = document.createElement("button");
     let cardTitle       = document.createElement("h1");
-    let cardCover       = document.createElement("img");
     let cardAuthor      = document.createElement("h2");
     let cardDescription = document.createElement("p");
 
+    // Fill DOM with content
     cardDelete.textContent      = "x";
     cardDelete.dataset.index    = index;
     cardDelete.id               = `delete-${index}`;
@@ -97,7 +99,16 @@ function render(targetDom, obj, index){
     cardAuthor.classList.add("book-author");
     cardDescription.classList.add("book-description");
 
-    card.append(cardRead, cardDelete, cardTitle, cardCover, cardAuthor, cardDescription);
+    // Create and set wrappers
+    let wrapperOptions  = document.createElement("div");
+    let wrapperText     = document.createElement("div");
+    wrapperOptions.classList.add("wrapper-options");
+    wrapperText.classList.add("wrapper-text");
+
+    // Append DOMs
+    wrapperOptions.append(cardRead, cardDelete);
+    wrapperText.append(cardTitle, cardAuthor, cardDescription);
+    card.append(wrapperOptions, cardCover, wrapperText);
     targetDom.appendChild(card);
 }
 
