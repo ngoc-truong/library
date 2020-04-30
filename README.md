@@ -1,7 +1,7 @@
 # Library
 
 In this project, I built a simple book review page with HTML, CSS, and Javascript. 
-It uses the local storage to save data on a user's computer (so no backend is implemented).
+No backend was implemented so the data will be lost after refreshing the page.
 I built this project in order to review Javascript objects and HTML forms. This project
 was part of the Javascript track on [The Odin Project](https://www.theodinproject.com/lessons/library), an open source online curriculum to learn full stack web development.
 

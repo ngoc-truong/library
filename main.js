@@ -154,7 +154,7 @@ renderAll(mainContent, myLibrary);
 function refreshDeleteButtons(){
     deleteButtons.forEach( (button) => {
         button.addEventListener("click", (e) => {
-            if (confirm("Are you sure, you want to delete this book :(?")){
+            if (confirm("Man, I need to bother you again :(. But are you sure, you want to delete this book? Like for real?")){
                 let indexOfBook = button.dataset.index;
                 myLibrary.splice(indexOfBook, 1);
                 removeAll(mainContent);
