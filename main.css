@@ -1,8 +1,8 @@
 :root {
     --background: #b0e0e6;
     --background-gradient: #d0e1e4;
-    --font: #454547;
-    --font-gradient: #92929b;
+    --font: #5d5d5e;
+    --font-gradient: #a6a6aa;
     --light-grey: #dbdbdd;
     --grey: #aeafb3;
     --highlight1: #eec71a;
@@ -13,6 +13,7 @@
     --highlight3-gradient: #a6f3aa;
     --card: white;
     --card-gradient: white;
+    --read: #7d7d7e;
 }
 
 /* General elemets */
@@ -90,10 +91,6 @@ button {
     border: none;
 }
 
-#submit, .delete, .read {
-    font-weight: bolder;
-}
-
 #submit:hover, .delete:hover, .read:hover {
     filter: brightness(110%);
 }
@@ -101,9 +98,10 @@ button {
 #submit {
     width: 8em;
     height: 3em;
-    background-color: var(--highlight2);
+    color: white;
     background: linear-gradient(45deg, var(--highlight2), var(--highlight2-gradient));
     border-radius: 5px;
+    font-weight: bolder;
 }
 
 
@@ -122,11 +120,14 @@ button {
 
 .delete, .read {
     background-color: var(--highlight1);
-    color: var(--font);
+    color: white;
     height: 2em;
     border-radius: 5px;
+    font-weight: bolder;
 }
+
 .read, .unread {
+    color: var(--read);
     width: 15.5em;
 }
 
@@ -148,7 +149,7 @@ button {
     float: right;
     width: 2em;
     background: linear-gradient(45deg, var(--highlight1), var(--highlight1-gradient));
-
+    color: white;
 }
 
 .book-cover {
