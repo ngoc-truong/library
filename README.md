@@ -5,7 +5,7 @@ It uses the local storage to save data on a user's computer (so no backend is im
 I built this project in order to review Javascript objects and HTML forms. This project
 was part of the Javascript track on [The Odin Project](https://www.theodinproject.com/lessons/library), an open source online curriculum to learn full stack web development.
 
-[View preview of the app](https://htmlpreview.github.io/?https://github.com/ngoc-truong/library/blob/master/index.html)
+### [View preview of the app](https://htmlpreview.github.io/?https://github.com/ngoc-truong/library/blob/master/index.html)
 ![Screenshot of book library page](https://github.com/ngoc-truong/library/blob/master/images/Screenshot_2020-04-30%20Screenshot.png)
 
 ## Functionalities
